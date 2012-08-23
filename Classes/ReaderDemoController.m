@@ -24,45 +24,18 @@
 //
 
 #import "ReaderDemoController.h"
+#import "AudioFilesTableViewController.h"
 
 @implementation ReaderDemoController
 
 #pragma mark Constants
 
-#define DEMO_VIEW_CONTROLLER_PUSH FALSE
-
-//#pragma mark Properties
-
-//@synthesize ;
+#define kBottomToolbarHeight 44.0f
+#define kBottomButtonWidth 200.0f
+#define kBottomButtonHeight 30.0f
 
 #pragma mark UIViewController methods
 
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-#ifdef DEBUGX
-	NSLog(@"%s", __FUNCTION__);
-#endif
-
-	if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
-	{
-		// Custom initialization
-	}
-
-	return self;
-}
-*/
-
-/*
-- (void)loadView
-{
-#ifdef DEBUGX
-	NSLog(@"%s", __FUNCTION__);
-#endif
-
-	// Implement loadView to create a view hierarchy programmatically, without using a nib.
-}
-*/
 
 - (void)viewDidLoad
 {
@@ -74,92 +47,57 @@
 
 	self.view.backgroundColor = [UIColor clearColor]; // Transparent
 
-	NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-
-	NSString *name = [infoDictionary objectForKey:@"CFBundleName"];
-
-	NSString *version = [infoDictionary objectForKey:@"CFBundleVersion"];
-
-	self.title = [NSString stringWithFormat:@"%@ v%@", name, version];
+	self.title = NSLocalizedString(@"main_title", nil); //изменять название программы здесь, используется локализация - менять название нужно в Localizable.strings
 
 	CGSize viewSize = self.view.bounds.size;
-
-	CGRect labelRect = CGRectMake(0.0f, 0.0f, 80.0f, 32.0f);
-
-	UILabel *tapLabel = [[UILabel alloc] initWithFrame:labelRect];
-
-	tapLabel.text = @"Tap";
-	tapLabel.textColor = [UIColor whiteColor];
-	tapLabel.textAlignment = UITextAlignmentCenter;
-	tapLabel.backgroundColor = [UIColor clearColor];
-	tapLabel.font = [UIFont systemFontOfSize:24.0f];
-	tapLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-	tapLabel.autoresizingMask |= UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-	tapLabel.center = CGPointMake(viewSize.width / 2.0f, viewSize.height / 2.0f);
-
-	[self.view addSubview:tapLabel]; [tapLabel release];
-
-	UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-	//singleTap.numberOfTouchesRequired = 1; singleTap.numberOfTapsRequired = 1; //singleTap.delegate = self;
-	[self.view addGestureRecognizer:singleTap]; [singleTap release];
+    UIImage *centralImage = [UIImage imageNamed:@"texture_odesk.jpg"]; // to support retina - add @2x of the image with twice the size
+    UIButton *centralButton = [[UIButton alloc] initWithFrame:CGRectMake(0, kBottomToolbarHeight, viewSize.width, viewSize.height-2*kBottomToolbarHeight)];
+    [centralButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+    [centralButton setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+    [centralButton setImage:centralImage forState:UIControlStateNormal];
+    [centralButton setAdjustsImageWhenDisabled:NO];
+    [centralButton setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin];
+    [centralButton addTarget:self action:@selector(handleSingleTap:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIToolbar *bottomToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, centralButton.frame.origin.y + centralButton.frame.size.height, centralButton.frame.size.width, kBottomToolbarHeight)];
+    [bottomToolbar setBarStyle:UIBarStyleBlackTranslucent];
+    
+    UIButton *goToAudioFilesTableView = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [goToAudioFilesTableView setTitle:NSLocalizedString(@"audiobook", nil) forState:UIControlStateNormal];
+    [goToAudioFilesTableView setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [goToAudioFilesTableView addTarget:self action:@selector(showAudiobookController) forControlEvents:UIControlEventTouchUpInside];
+    [goToAudioFilesTableView setFrame:CGRectMake(0, 0, kBottomButtonWidth, kBottomButtonHeight)];
+    
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithCustomView:goToAudioFilesTableView];
+    
+    [bottomToolbar setItems:[NSArray arrayWithObjects:spacer, btn, spacer, nil]];
+    [spacer release], [btn release];
+    
+	[self.view addSubview:centralButton];
+    [self.view addSubview:bottomToolbar];
+    [centralButton release];
+    [bottomToolbar release];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-#ifdef DEBUGX
-	NSLog(@"%s %@", __FUNCTION__, NSStringFromCGRect(self.view.bounds));
-#endif
-
 	[super viewWillAppear:animated];
-
-#if (DEMO_VIEW_CONTROLLER_PUSH == TRUE)
-
-	[self.navigationController setNavigationBarHidden:NO animated:animated];
-
-#endif // DEMO_VIEW_CONTROLLER_PUSH
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-#ifdef DEBUGX
-	NSLog(@"%s %@", __FUNCTION__, NSStringFromCGRect(self.view.bounds));
-#endif
-
 	[super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-#ifdef DEBUGX
-	NSLog(@"%s %@", __FUNCTION__, NSStringFromCGRect(self.view.bounds));
-#endif
-
 	[super viewWillDisappear:animated];
-
-#if (DEMO_VIEW_CONTROLLER_PUSH == TRUE)
-
-	[self.navigationController setNavigationBarHidden:YES animated:animated];
-
-#endif // DEMO_VIEW_CONTROLLER_PUSH
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-#ifdef DEBUGX
-	NSLog(@"%s %@", __FUNCTION__, NSStringFromCGRect(self.view.bounds));
-#endif
 
-	[super viewDidDisappear:animated];
-}
-
-- (void)viewDidUnload
-{
-#ifdef DEBUGX
-	NSLog(@"%s", __FUNCTION__);
-#endif
-
-	[super viewDidUnload];
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -192,62 +130,54 @@
 #ifdef DEBUGX
 	NSLog(@"%s %@ (%d to %d)", __FUNCTION__, NSStringFromCGRect(self.view.bounds), fromInterfaceOrientation, self.interfaceOrientation);
 #endif
-
 	//if (fromInterfaceOrientation == self.interfaceOrientation) return;
 }
 
 - (void)didReceiveMemoryWarning
 {
-#ifdef DEBUGX
-	NSLog(@"%s", __FUNCTION__);
-#endif
-
 	[super didReceiveMemoryWarning];
 }
 
 - (void)dealloc
 {
-#ifdef DEBUGX
-	NSLog(@"%s", __FUNCTION__);
-#endif
-
 	[super dealloc];
 }
 
-#pragma mark UIGestureRecognizer methods
+#pragma mark audio book table view
 
-- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
+- (void)showAudiobookController
 {
-#ifdef DEBUGX
-	NSLog(@"%s", __FUNCTION__);
-#endif
+    AudioFilesTableViewController *controller = [[AudioFilesTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
+}
 
+#pragma mark pdf reader opening
+
+- (void)handleSingleTap:(UIButton *)sender
+{
 	NSString *phrase = nil; // Document password (for unlocking most encrypted PDF files)
 
-	NSArray *pdfs = [[NSBundle mainBundle] pathsForResourcesOfType:@"pdf" inDirectory:nil];
-
+	/*
+    NSArray *pdfs = [[NSBundle mainBundle] pathsForResourcesOfType:@"pdf" inDirectory:nil];
+    //здесь у тебя массив со всеми pdf файлами
+    
 	NSString *filePath = [pdfs lastObject]; assert(filePath != nil); // Path to last PDF file
-
+    //здесь выбирается последний из них, можно поменять
+    */
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"helloworld" ofType:@"pdf"];
+    
 	ReaderDocument *document = [ReaderDocument withDocumentFilePath:filePath password:phrase];
-
 	if (document != nil) // Must have a valid ReaderDocument object in order to proceed with things
 	{
 		ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
-
 		readerViewController.delegate = self; // Set the ReaderViewController delegate to self
-
-#if (DEMO_VIEW_CONTROLLER_PUSH == TRUE)
-
-		[self.navigationController pushViewController:readerViewController animated:YES];
-
-#else // present in a modal view controller
 
 		readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 		readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
 
 		[self presentModalViewController:readerViewController animated:YES];
-
-#endif // DEMO_VIEW_CONTROLLER_PUSH
 
 		[readerViewController release]; // Release the ReaderViewController
 	}
@@ -257,19 +187,7 @@
 
 - (void)dismissReaderViewController:(ReaderViewController *)viewController
 {
-#ifdef DEBUGX
-	NSLog(@"%s", __FUNCTION__);
-#endif
-
-#if (DEMO_VIEW_CONTROLLER_PUSH == TRUE)
-
-	[self.navigationController popViewControllerAnimated:YES];
-
-#else // dismiss the modal view controller
-
 	[self dismissModalViewControllerAnimated:YES];
-
-#endif // DEMO_VIEW_CONTROLLER_PUSH
 }
 
 @end
