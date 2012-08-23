@@ -194,6 +194,8 @@
 		D8A10F8D15E6B357009F4BA7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D8A10F8F15E6B36B009F4BA7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D8A10F9615E6B6AE009F4BA7 /* helloworld.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = helloworld.pdf; sourceTree = "<group>"; };
+		D8A10F9915E6C099009F4BA7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Resources/es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D8A10F9A15E6C0A1009F4BA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Resources/de.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -574,6 +576,8 @@
 			children = (
 				4541A9D5122EA686001A5E60 /* en */,
 				D8A10F4915E6AB7A009F4BA7 /* ru */,
+				D8A10F9915E6C099009F4BA7 /* es */,
+				D8A10F9A15E6C0A1009F4BA7 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
