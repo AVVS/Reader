@@ -57,7 +57,10 @@
 		45AB7324141FC0B1003524C3 /* ThumbsMainToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AB7310141FC0B1003524C3 /* ThumbsMainToolbar.m */; };
 		45AB7325141FC0B1003524C3 /* ThumbsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AB7312141FC0B1003524C3 /* ThumbsViewController.m */; };
 		45BD5AFE13AE721A00D6FE97 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BD5AFD13AE721A00D6FE97 /* MessageUI.framework */; };
-		D8A10F4D15E6AC3E009F4BA7 /* texture_odesk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8A10F4C15E6AC3E009F4BA7 /* texture_odesk.jpg */; };
+		D8692E5915E6C479003DF584 /* texture_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D8692E5515E6C479003DF584 /* texture_ipad.png */; };
+		D8692E5A15E6C479003DF584 /* texture_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8692E5615E6C479003DF584 /* texture_ipad@2x.png */; };
+		D8692E5B15E6C479003DF584 /* texture_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D8692E5715E6C479003DF584 /* texture_iphone.png */; };
+		D8692E5C15E6C479003DF584 /* texture_iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8692E5815E6C479003DF584 /* texture_iphone@2x.png */; };
 		D8A10F5015E6B078009F4BA7 /* AudioFilesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A10F4F15E6B078009F4BA7 /* AudioFilesTableViewController.m */; };
 		D8A10F5415E6B0A2009F4BA7 /* 02 Big Bright World.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D8A10F5215E6B0A2009F4BA7 /* 02 Big Bright World.mp3 */; };
 		D8A10F5515E6B0A2009F4BA7 /* 03 Blood For Poppies.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D8A10F5315E6B0A2009F4BA7 /* 03 Blood For Poppies.mp3 */; };
@@ -162,8 +165,11 @@
 		45AB7312141FC0B1003524C3 /* ThumbsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThumbsViewController.m; path = Sources/ThumbsViewController.m; sourceTree = "<group>"; };
 		45BD5AFD13AE721A00D6FE97 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Reader-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Reader-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D8692E5515E6C479003DF584 /* texture_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_ipad.png; sourceTree = "<group>"; };
+		D8692E5615E6C479003DF584 /* texture_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "texture_ipad@2x.png"; sourceTree = "<group>"; };
+		D8692E5715E6C479003DF584 /* texture_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_iphone.png; sourceTree = "<group>"; };
+		D8692E5815E6C479003DF584 /* texture_iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "texture_iphone@2x.png"; sourceTree = "<group>"; };
 		D8A10F4915E6AB7A009F4BA7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Resources/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D8A10F4C15E6AC3E009F4BA7 /* texture_odesk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture_odesk.jpg; sourceTree = "<group>"; };
 		D8A10F4E15E6B077009F4BA7 /* AudioFilesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilesTableViewController.h; sourceTree = "<group>"; };
 		D8A10F4F15E6B078009F4BA7 /* AudioFilesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioFilesTableViewController.m; sourceTree = "<group>"; };
 		D8A10F5215E6B0A2009F4BA7 /* 02 Big Bright World.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 Big Bright World.mp3"; sourceTree = "<group>"; };
@@ -374,7 +380,10 @@
 		D8A10F4B15E6AC2A009F4BA7 /* textures_change_here */ = {
 			isa = PBXGroup;
 			children = (
-				D8A10F4C15E6AC3E009F4BA7 /* texture_odesk.jpg */,
+				D8692E5515E6C479003DF584 /* texture_ipad.png */,
+				D8692E5615E6C479003DF584 /* texture_ipad@2x.png */,
+				D8692E5715E6C479003DF584 /* texture_iphone.png */,
+				D8692E5815E6C479003DF584 /* texture_iphone@2x.png */,
 			);
 			name = textures_change_here;
 			sourceTree = "<group>";
@@ -509,7 +518,6 @@
 				455C789F14268F6A0053D73B /* Reader-Button-N.png in Resources */,
 				455C78A014268F6A0053D73B /* Reader-Button-N@2x.png in Resources */,
 				4583767F1533B0AC003CD230 /* AppIcon-144.png in Resources */,
-				D8A10F4D15E6AC3E009F4BA7 /* texture_odesk.jpg in Resources */,
 				D8A10F5415E6B0A2009F4BA7 /* 02 Big Bright World.mp3 in Resources */,
 				D8A10F5515E6B0A2009F4BA7 /* 03 Blood For Poppies.mp3 in Resources */,
 				D8A10F7C15E6B316009F4BA7 /* AudioPlayerVolumeKnob.png in Resources */,
@@ -530,6 +538,10 @@
 				D8A10F8B15E6B316009F4BA7 /* AudioPlayerBarBackground.png in Resources */,
 				D8A10F8C15E6B316009F4BA7 /* AudioPlayerAlbumInfo.png in Resources */,
 				D8A10F9B15E6C189009F4BA7 /* helloworld.pdf in Resources */,
+				D8692E5915E6C479003DF584 /* texture_ipad.png in Resources */,
+				D8692E5A15E6C479003DF584 /* texture_ipad@2x.png in Resources */,
+				D8692E5B15E6C479003DF584 /* texture_iphone.png in Resources */,
+				D8692E5C15E6C479003DF584 /* texture_iphone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

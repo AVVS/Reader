@@ -34,6 +34,11 @@
 #define kBottomButtonWidth 200.0f
 #define kBottomButtonHeight 30.0f
 
+#define UI_USER_INTERFACE_IDIOM() \
+([[UIDevice currentDevice] respondsToSelector:@selector(userInterfaceIdiom)] ? \
+[[UIDevice currentDevice] userInterfaceIdiom] : \
+UIUserInterfaceIdiomPhone)
+
 #pragma mark UIViewController methods
 
 
@@ -50,11 +55,22 @@
 	self.title = NSLocalizedString(@"main_title", nil); //изменять название программы здесь, используется локализация - менять название нужно в Localizable.strings
 
 	CGSize viewSize = self.view.bounds.size;
-    UIImage *centralImage = [UIImage imageNamed:@"texture_odesk.jpg"]; // to support retina - add @2x of the image with twice the size
+    
+    UIImage *centralImage = nil;
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
+        centralImage = [UIImage imageNamed:@"texture_iphone"]; // to support retina - add @2x of the image with twice the size
+    } else {
+        centralImage = [UIImage imageNamed:@"texture_ipad"]; // to support retina - add @2x of the image with twice the size
+    }
+    
+    
+    
     UIButton *centralButton = [[UIButton alloc] initWithFrame:CGRectMake(0, kBottomToolbarHeight, viewSize.width, viewSize.height-2*kBottomToolbarHeight)];
+    [centralButton setAutoresizesSubviews:YES];
+    [centralButton setContentMode:UIViewContentModeScaleAspectFill];
     [centralButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
     [centralButton setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    [centralButton setImage:centralImage forState:UIControlStateNormal];
+    [centralButton setBackgroundImage:centralImage forState:UIControlStateNormal];
     [centralButton setAdjustsImageWhenDisabled:NO];
     [centralButton setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin];
     [centralButton addTarget:self action:@selector(handleSingleTap:) forControlEvents:UIControlEventTouchUpInside];
