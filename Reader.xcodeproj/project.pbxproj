@@ -83,7 +83,7 @@
 		D8A10F8C15E6B316009F4BA7 /* AudioPlayerAlbumInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A10F7B15E6B316009F4BA7 /* AudioPlayerAlbumInfo.png */; };
 		D8A10F8E15E6B357009F4BA7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A10F8D15E6B357009F4BA7 /* AudioToolbox.framework */; };
 		D8A10F9015E6B36B009F4BA7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A10F8F15E6B36B009F4BA7 /* AVFoundation.framework */; };
-		D8A10F9715E6B6AE009F4BA7 /* helloworld.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D8A10F9615E6B6AE009F4BA7 /* helloworld.pdf */; };
+		D8A10F9B15E6C189009F4BA7 /* helloworld.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D8A10F9D15E6C189009F4BA7 /* helloworld.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -193,9 +193,9 @@
 		D8A10F7B15E6B316009F4BA7 /* AudioPlayerAlbumInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AudioPlayerAlbumInfo.png; sourceTree = "<group>"; };
 		D8A10F8D15E6B357009F4BA7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D8A10F8F15E6B36B009F4BA7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		D8A10F9615E6B6AE009F4BA7 /* helloworld.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = helloworld.pdf; sourceTree = "<group>"; };
 		D8A10F9915E6C099009F4BA7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Resources/es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D8A10F9A15E6C0A1009F4BA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Resources/de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D8A10F9C15E6C189009F4BA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = en; path = en.lproj/helloworld.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,7 +429,7 @@
 		D8A10F9515E6B699009F4BA7 /* pdfs */ = {
 			isa = PBXGroup;
 			children = (
-				D8A10F9615E6B6AE009F4BA7 /* helloworld.pdf */,
+				D8A10F9D15E6C189009F4BA7 /* helloworld.pdf */,
 			);
 			name = pdfs;
 			sourceTree = "<group>";
@@ -471,6 +471,8 @@
 				jp,
 				fr,
 				de,
+				ru,
+				es,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -527,7 +529,7 @@
 				D8A10F8A15E6B316009F4BA7 /* AudioPlayerNextTrack.png in Resources */,
 				D8A10F8B15E6B316009F4BA7 /* AudioPlayerBarBackground.png in Resources */,
 				D8A10F8C15E6B316009F4BA7 /* AudioPlayerAlbumInfo.png in Resources */,
-				D8A10F9715E6B6AE009F4BA7 /* helloworld.pdf in Resources */,
+				D8A10F9B15E6C189009F4BA7 /* helloworld.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +582,14 @@
 				D8A10F9A15E6C0A1009F4BA7 /* de */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D8A10F9D15E6C189009F4BA7 /* helloworld.pdf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8A10F9C15E6C189009F4BA7 /* en */,
+			);
+			name = helloworld.pdf;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
